@@ -48,7 +48,7 @@ export default function HomePage() {
             Un projet en tête ?
           </h2>
           <p className="text-gray-400 text-lg mb-10">
-            N'hésite pas à me contacter pour discuter de ton projet ou d'une
+            N'hésitez pas à me contacter pour discuter de ton projet ou d'une
             opportunité de collaboration.
           </p>
           {/* Bouton principal — ouvre la modale de contact */}
