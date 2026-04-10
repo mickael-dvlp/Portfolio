@@ -1,26 +1,75 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   THÈME PERSONNALISÉ — Palette dark mode du portfolio
+   Tailwind v4 : les couleurs custom se définissent ici via @theme
+   ============================================================ */
+@theme {
+  /* --- Palette de fonds (du plus sombre au plus clair) --- */
+  --color-dark-950: #07070f;
+  --color-dark-900: #0d0d14;
+  --color-dark-800: #12121e;
+  --color-dark-700: #1a1a2e;
+  --color-dark-600: #252540;
+  --color-dark-500: #2d2d4e;
+
+  /* --- Couleur d'accent principale (violet/indigo) --- */
+  --color-accent: #6c63ff;
+  --color-accent-hover: #5a52e0;
+  --color-accent-light: #8b85ff;
+
+  /* --- Police principale --- */
+  --font-sans: "Inter", system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ============================================================
+   KEYFRAMES PERSONNALISÉES
+   ============================================================ */
+
+/* Pulsation lente pour les éléments décoratifs du hero */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.3; }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================================
+   STYLES DE BASE
+   ============================================================ */
+
+/* Comportement de scroll fluide pour les ancres */
+html {
+  scroll-behavior: smooth;
 }
 
+/* Fond et couleur de texte forcés en dark mode */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0d0d14;
+  color: #ffffff;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* Classe utilitaire : animation de pulsation lente */
+.animate-pulse-slow {
+  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ============================================================
+   SCROLLBAR PERSONNALISÉE
+   Style discret correspondant au thème dark
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0d14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2d2d4e;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6c63ff;
 }

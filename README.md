@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio — Mickael MARTONE
 
-## Getting Started
+Portfolio personnel de Mickael MARTONE, développeur web full stack. Conçu pour présenter mes compétences, mes projets et mes articles.
 
-First, run the development server:
+## Technologies utilisées
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Framework : Next.js 16 (App Router)
+- Style : Tailwind CSS v4
+- Icônes : React Icons
+- Langage : JavaScript (JSX)
+- Déploiement : Vercel _(prévu)_
+
+## Structure du projet
+
+```
+app/
+├── layout.jsx          # Layout racine (Navbar, Footer, BackToTop)
+├── template.jsx        # Transitions de page (fondu entre les routes)
+├── page.jsx            # Page d'accueil
+├── not-found.jsx       # Page 404 personnalisée
+├── articles/
+│   └── page.jsx        # Page articles (à venir)
+└── projets/
+    └── page.jsx        # Page projets
+
+components/
+├── Navbar.jsx          # Barre de navigation responsive
+├── Footer.jsx          # Pied de page
+├── Logo.jsx            # Logo (public/image/logo/logov1.png)
+├── HeroSection.jsx     # Section d'accueil (nom, titre, CTA)
+├── SkillsSection.jsx   # Grille des compétences par catégorie
+├── ProjectCard.jsx     # Carte de projet
+├── ArticleCard.jsx     # Carte d'article
+├── ContactModal.jsx    # Modale de contact
+└── BackToTop.jsx       # Bouton retour en haut de page
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Pages
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Accueil (`/`)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Présentation personnelle avec photo, titre, liens CTA vers les compétences et les projets. Section compétences organisée par catégorie : **Frontend**, **Frameworks & Langages**, **Outils**.
 
-## Learn More
+### Projets (`/projets`)
 
-To learn more about Next.js, take a look at the following resources:
+Trois sections :
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Jeux créés avec JS** — projets JavaScript vanilla (Pendu, Morpion, Puissance 4)
+- **Projets personnels** — à venir
+- **Projets vitrines** — à venir
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Articles (`/articles`)
 
-## Deploy on Vercel
+Blog technique à venir — tutoriels et retours d'expérience sur le développement web.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Lancer le projet
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm install
+npm run dev
+```
+
+Ouvre [http://localhost:3000](http://localhost:3000) dans le navigateur.
+
+> Le projet utilise Webpack (`--webpack`) en développement pour contourner un bug Turbopack sur Windows avec Next.js 16.
