@@ -11,9 +11,9 @@ const jsGames = [
     title: "Jeu du Pendu",
     description:
       "Un classique ! Devinez le mot caché lettre par lettre avant que le bonhomme ne soit complété. Plusieurs niveaux de difficulté disponibles.",
-    href: "https://placeholder-pendu.vercel.app",
+    href: "https://mickael-dvlp.github.io/01.Projet-Jeu-du-Pendu/",
     /* Remplace par l'URL de ton dépôt GitHub */
-    github: "https://github.com/placeholder/pendu",
+    github: "https://github.com/mickael-dvlp/01.Projet-Jeu-du-Pendu.git",
     tags: ["JavaScript", "HTML", "CSS"],
     emoji: "🎯",
   },
@@ -22,9 +22,9 @@ const jsGames = [
     title: "Morpion",
     description:
       "Le jeu de morpion (Tic-Tac-Toe) classique avec mode 2 joueurs et intelligence artificielle. Soyez le premier à aligner 3 symboles !",
-    href: "https://placeholder-morpion.vercel.app",
+    href: "https://mickael-dvlp.github.io/02.Projet-Morpion-Vanilla-/",
     /* Remplace par l'URL de ton dépôt GitHub */
-    github: "https://github.com/placeholder/morpion",
+    github: "https://github.com/mickael-dvlp/02.Projet-Morpion-Vanilla-.git",
     tags: ["JavaScript", "HTML", "CSS"],
     emoji: "⭕",
   },
@@ -33,9 +33,9 @@ const jsGames = [
     title: "Puissance 4",
     description:
       "Affrontez l'ordinateur dans une partie de Puissance 4. Alignez 4 jetons de votre couleur horizontalement, verticalement ou en diagonale avant votre adversaire !",
-    href: "https://placeholder-bataille.vercel.app",
+    href: "https://mickael-dvlp.github.io/04.Projet-jeu-Puissance4/",
     /* Remplace par l'URL de ton dépôt GitHub */
-    github: "https://github.com/placeholder/bataille-navale",
+    github: "https://github.com/mickael-dvlp/04.Projet-jeu-Puissance4.git",
     tags: ["JavaScript", "HTML", "CSS"],
     emoji: "🔴",
   },
@@ -129,15 +129,14 @@ export default function ProjetsPage() {
   return (
     <main className="min-h-screen pt-24 pb-20 px-4">
       <div className="max-w-7xl mx-auto space-y-20">
-
         {/* ---- En-tête de la page ---- */}
         <div className="text-center">
           <h1 className="text-4xl lg:text-5xl font-bold text-white">
             Mes Projets
           </h1>
           <p className="text-gray-400 mt-4 max-w-xl mx-auto text-lg">
-            Une sélection de mes réalisations — des jeux JavaScript aux
-            projets professionnels.
+            Une sélection de mes réalisations — des jeux JavaScript aux projets
+            professionnels.
           </p>
         </div>
 

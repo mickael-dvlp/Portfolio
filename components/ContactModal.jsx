@@ -85,7 +85,7 @@ export default function ContactModal({ isOpen, onClose }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={handleBackdropClick}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
         >
           {/* Carte de la modale */}
           <motion.div
@@ -125,8 +125,7 @@ export default function ContactModal({ isOpen, onClose }) {
               {/* Nom ou entreprise */}
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-1">
-                  Nom ou entreprise{" "}
-                  <span className="text-accent">*</span>
+                  Nom ou entreprise <span className="text-accent">*</span>
                 </label>
                 <input
                   type="text"
@@ -157,8 +156,7 @@ export default function ContactModal({ isOpen, onClose }) {
               {/* Motif de la demande */}
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-1">
-                  Motif de la demande{" "}
-                  <span className="text-accent">*</span>
+                  Motif de la demande <span className="text-accent">*</span>
                 </label>
                 <input
                   type="text"

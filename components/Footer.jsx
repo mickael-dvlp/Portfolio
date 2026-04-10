@@ -13,7 +13,7 @@ import ContactModal from "./ContactModal";
 const socialLinks = [
   {
     icon: FaGithub,
-    href: "https://github.com/placeholder",
+    href: "https://github.com/mickael-dvlp",
     label: "GitHub",
     /* Couleur au survol correspondant à la marque GitHub */
     hoverClass: "hover:text-white",
@@ -51,10 +51,8 @@ export default function Footer() {
     <>
       <footer className="bg-dark-800 border-t border-dark-500/40 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-
           {/* ---- Rangée principale ---- */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-
             {/* Logo + Nom */}
             <Link href="/" className="flex items-center gap-3 group">
               <Logo className="w-8 h-8" />
@@ -92,7 +90,8 @@ export default function Footer() {
           {/* ---- Ligne de copyright ---- */}
           <div className="mt-8 pt-6 border-t border-dark-500/30 text-center">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Mickael MARTONE. Tous droits réservés.
+              © {new Date().getFullYear()} Mickael MARTONE. Tous droits
+              réservés.
             </p>
           </div>
         </div>

@@ -105,6 +105,23 @@ export default function HeroSection() {
               Mes projets
             </a>
           </div>
+
+          {/* Boutons CV */}
+          <div className="flex flex-wrap gap-4">
+            {["Cv de Mickael", "Cv ATS"].map((label) => (
+              <div key={label} className="relative group/cv">
+                <button
+                  disabled
+                  className="px-6 py-3 border border-dark-500 text-gray-500 font-medium rounded-lg cursor-not-allowed opacity-60"
+                >
+                  {label}
+                </button>
+                <span className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap bg-dark-700 text-gray-300 text-xs px-3 py-1.5 rounded-md border border-dark-500 opacity-0 group-hover/cv:opacity-100 transition-opacity duration-200 pointer-events-none">
+                  En cours de création
+                </span>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* ======================================================
@@ -136,18 +153,7 @@ export default function HeroSection() {
             ------------------------------------------------ */}
             <div className="relative w-72 h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-2 border-accent/30 shadow-2xl">
               <div className="w-full h-full bg-linear-to-br from-dark-700 to-dark-600 flex flex-col items-center justify-center">
-                {/* Icône silhouette */}
-                <svg
-                  className="w-28 h-28 text-dark-500"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
-                </svg>
-                <p className="text-dark-500 text-sm mt-2 font-medium">
-                  Ta photo ici
-                </p>
+                <p className="text-gray-400 text-sm font-medium">A venir !</p>
               </div>
             </div>
 
