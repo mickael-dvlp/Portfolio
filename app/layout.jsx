@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import { Toaster } from "sonner";
 
 /* ============================================================
    Configuration de la police Inter (Google Fonts)
@@ -17,19 +18,36 @@ const inter = Inter({
    Métadonnées de l'application (utilisées pour le SEO)
    ============================================================ */
 export const metadata = {
-  title: "Mickael MARTONE — Développeur Web",
+  title: "Mickael MARTONE — Développeur Web Full Stack",
   description:
-    "Portfolio de Mickael MARTONE, développeur web full stack spécialisé en React, Next.js et PHP.",
+    "Portfolio de Mickael MARTONE, développeur web full stack freelance spécialisé en React, Next.js et PHP. Création de sites web modernes, performants et sur mesure.",
   keywords: [
     "développeur web",
+    "développeur full stack",
     "React",
     "Next.js",
     "PHP",
     "portfolio",
     "freelance",
+    "Mickael MARTONE",
   ],
   icons: {
     icon: "/image/favicon.ico",
+  },
+  openGraph: {
+    title: "Mickael MARTONE — Développeur Web Full Stack",
+    description:
+      "Développeur web full stack freelance spécialisé en React, Next.js et PHP. Découvrez mes projets et contactez-moi.",
+    images: ["/image/logo/logov1.png"],
+    type: "website",
+    locale: "fr_FR",
+  },
+  twitter: {
+    card: "summary",
+    title: "Mickael MARTONE — Développeur Web Full Stack",
+    description:
+      "Développeur web full stack freelance spécialisé en React, Next.js et PHP.",
+    images: ["/image/logo/logov1.png"],
   },
 };
 
@@ -58,6 +76,9 @@ export default function RootLayout({ children }) {
 
         {/* Bouton retour en haut */}
         <BackToTop />
+
+        {/* Notifications toast */}
+        <Toaster position="bottom-center" richColors />
       </body>
     </html>
   );

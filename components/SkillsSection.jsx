@@ -12,7 +12,10 @@ import {
   SiNextdotjs,
   SiPhp,
   SiClaude,
+  SiGit,
+  SiGithub,
 } from "react-icons/si";
+import { VscVscode } from "react-icons/vsc";
 
 /* ============================================================
    Compétences regroupées par catégorie
@@ -41,7 +44,10 @@ const categories = [
   {
     label: "Outils",
     skills: [
-      { icon: SiClaude,     name: "Claude Code", color: "#D97757", glow: "rgba(217, 119, 87, 0.45)" },
+      { icon: SiGit,              name: "Git",          color: "#F05032", glow: "rgba(240, 80, 50, 0.45)" },
+      { icon: SiGithub,           name: "GitHub",       color: "#FFFFFF", glow: "rgba(255, 255, 255, 0.15)" },
+      { icon: VscVscode,          name: "VS Code",      color: "#007ACC", glow: "rgba(0, 122, 204, 0.45)" },
+      { icon: SiClaude,           name: "Claude Code",  color: "#D97757", glow: "rgba(217, 119, 87, 0.45)" },
     ],
   },
 ];

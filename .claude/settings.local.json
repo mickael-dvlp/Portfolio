@@ -5,7 +5,10 @@
       "WebSearch",
       "WebFetch(domain:pixabay.com)",
       "Bash(del \"c:/Users/Micka/Desktop/Github_Pro/Projet_portfolio/public/image/one-ring.svg\")",
-      "PowerShell(Rename-Item \"c:/Users/Micka/Desktop/Github_Pro/Projet_portfolio/public/image/ring-lotr.jfif\" \"ring-lotr.jpg\")"
+      "PowerShell(Rename-Item \"c:/Users/Micka/Desktop/Github_Pro/Projet_portfolio/public/image/ring-lotr.jfif\" \"ring-lotr.jpg\")",
+      "Bash(node -e \"const si = require\\('react-icons/si'\\); const keys = Object.keys\\(si\\).filter\\(k => k.toLowerCase\\(\\).includes\\('visual'\\)\\); console.log\\(keys\\)\")",
+      "Bash(node -e \"const si = require\\('react-icons/si'\\); const keys = Object.keys\\(si\\).filter\\(k => k.toLowerCase\\(\\).includes\\('vscode'\\) || k.toLowerCase\\(\\).includes\\('studio'\\)\\); console.log\\(keys\\)\")",
+      "Bash(node -e \"const vsc = require\\('react-icons/vsc'\\); const keys = Object.keys\\(vsc\\).filter\\(k => k.toLowerCase\\(\\).includes\\('vscode'\\)\\); console.log\\(keys.slice\\(0,5\\)\\)\")"
     ]
   }
 }

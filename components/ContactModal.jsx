@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { toast } from "sonner";
 
 /* ============================================================
    État initial du formulaire
@@ -73,6 +74,7 @@ export default function ContactModal({ isOpen, onClose }) {
       if (!res.ok) throw new Error();
       setForm(initialFormState);
       onClose();
+      toast.success("Votre mail est bien parti !");
     } catch {
       setError("Une erreur est survenue. Veuillez réessayer.");
     } finally {

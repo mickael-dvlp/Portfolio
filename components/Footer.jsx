@@ -27,7 +27,7 @@ const socialLinks = [
   },
   {
     icon: FaLinkedin,
-    href: "https://linkedin.com/in/placeholder",
+    href: "https://www.linkedin.com/in/mickael-martone-218540214",
     label: "LinkedIn",
     /* Couleur au survol correspondant à la marque LinkedIn */
     hoverClass: "hover:text-blue-400",
