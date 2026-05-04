@@ -56,12 +56,27 @@ export default function ContactModal({ isOpen, onClose }) {
    * Pour l'instant log les données — à connecter à une vraie API plus tard
    * @param {React.FormEvent} e - Événement de soumission
    */
-  const handleSubmit = (e) => {
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    /* TODO: envoyer les données à une API / base de données */
-    console.log("Données du formulaire :", form);
-    setForm(initialFormState);
-    onClose();
+    setSending(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error();
+      setForm(initialFormState);
+      onClose();
+    } catch {
+      setError("Une erreur est survenue. Veuillez réessayer.");
+    } finally {
+      setSending(false);
+    }
   };
 
   /**
@@ -186,20 +201,27 @@ export default function ContactModal({ isOpen, onClose }) {
                 />
               </div>
 
+              {/* Message d'erreur */}
+              {error && (
+                <p className="text-red-400 text-sm text-center">{error}</p>
+              )}
+
               {/* Boutons d'action */}
               <div className="flex gap-3 pt-2">
                 <button
                   type="button"
                   onClick={onClose}
-                  className="flex-1 px-4 py-2.5 border border-dark-500 text-gray-300 rounded-lg hover:bg-dark-600 transition-colors"
+                  disabled={sending}
+                  className="flex-1 px-4 py-2.5 border border-dark-500 text-gray-300 rounded-lg hover:bg-dark-600 transition-colors disabled:opacity-50"
                 >
                   Annuler
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 px-4 py-2.5 bg-accent hover:bg-accent-hover text-white font-medium rounded-lg transition-all hover:shadow-lg"
+                  disabled={sending}
+                  className="flex-1 px-4 py-2.5 bg-accent hover:bg-accent-hover text-white font-medium rounded-lg transition-all hover:shadow-lg disabled:opacity-50"
                 >
-                  Envoyer
+                  {sending ? "Envoi en cours..." : "Envoyer"}
                 </button>
               </div>
             </form>

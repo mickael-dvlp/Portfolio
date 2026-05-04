@@ -108,18 +108,19 @@ export default function HeroSection() {
 
           {/* Boutons CV */}
           <div className="flex flex-wrap gap-4">
-            {["Cv de Mickael", "Cv ATS"].map((label) => (
-              <div key={label} className="relative group/cv">
-                <button
-                  disabled
-                  className="px-6 py-3 border border-dark-500 text-gray-500 font-medium rounded-lg cursor-not-allowed opacity-60"
-                >
-                  {label}
-                </button>
-                <span className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap bg-dark-700 text-gray-300 text-xs px-3 py-1.5 rounded-md border border-dark-500 opacity-0 group-hover/cv:opacity-100 transition-opacity duration-200 pointer-events-none">
-                  En cours de création
-                </span>
-              </div>
+            {[
+              { label: "Cv de Mickael", href: "/doc/CV_Mickael_Martone.pdf" },
+              { label: "Cv ATS", href: "/doc/CV_ATS_Martone_Mickael.pdf" },
+            ].map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 border border-dark-500 text-gray-300 hover:border-accent hover:text-accent font-medium rounded-lg transition-all duration-200"
+              >
+                {label}
+              </a>
             ))}
           </div>
         </motion.div>
