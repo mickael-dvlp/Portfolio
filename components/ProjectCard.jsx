@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { FiExternalLink } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa";
+import Image from "next/image";
 
 /**
  * ProjectCard — Carte de projet avec effet hover et lien externe optionnel
@@ -36,8 +37,12 @@ export default function ProjectCard({ project, index }) {
         {/* ---- En-tête : emoji + titre + icône lien externe ---- */}
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center gap-3">
-            {/* Emoji représentant le projet (optionnel) */}
-            {project.emoji && <span className="text-3xl">{project.emoji}</span>}
+            {/* Image ou emoji représentant le projet (optionnel) */}
+            {project.image ? (
+              <Image src={project.image} alt={project.title} width={40} height={40} className="object-contain" />
+            ) : project.emoji ? (
+              <span className="text-3xl">{project.emoji}</span>
+            ) : null}
             <h3 className="text-white font-semibold text-lg group-hover:text-accent transition-colors leading-snug">
               {project.title}
             </h3>

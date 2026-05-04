@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "WebSearch",
+      "WebFetch(domain:pixabay.com)",
+      "Bash(del \"c:/Users/Micka/Desktop/Github_Pro/Projet_portfolio/public/image/one-ring.svg\")"
     ]
   }
 }

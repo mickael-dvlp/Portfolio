@@ -47,16 +47,15 @@ const jsGames = [
    Structure identique aux autres sections.
    ============================================================ */
 const personalProjects = [
-  /* Exemple à décommenter et personnaliser :
   {
     id: 1,
-    title: "Mon projet perso",
-    description: "Description de mon projet.",
-    href: "https://mon-projet.vercel.app",
+    title: "MESBG Figurine",
+    description:
+      "Application de recensement et de gestion de collection de figurines pour le jeu Middle-Earth Strategy Battle Game. Suivez votre armée, gérez vos peintures et organisez vos batailles.",
+    href: "https://recensement-fig-ev5k.vercel.app/connexion",
     tags: ["Next.js", "Tailwind"],
-    emoji: "🚀",
+    image: "/image/ring-lotr.jfif",
   },
-  */
 ];
 
 /* ============================================================
@@ -87,7 +86,7 @@ function SectionTitle({ title, subtitle }) {
     <div className="mb-8">
       <h2 className="text-2xl lg:text-3xl font-bold text-white flex items-center gap-3">
         {/* Barre verticale accent décorative */}
-        <span className="w-1 h-8 bg-accent rounded-full inline-block flex-shrink-0" />
+        <span className="w-1 h-8 bg-accent rounded-full inline-block shrink-0" />
         {title}
       </h2>
       {subtitle && (
