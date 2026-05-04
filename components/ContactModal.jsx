@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
    ============================================================ */
 const initialFormState = {
   nom: "",
+  email: "",
   telephone: "",
   motif: "",
   description: "",
@@ -149,6 +150,22 @@ export default function ContactModal({ isOpen, onClose }) {
                   onChange={handleChange}
                   required
                   placeholder="Jean Dupont / Acme Corp."
+                  className="w-full px-4 py-2.5 bg-dark-800 border border-dark-500 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors"
+                />
+              </div>
+
+              {/* Adresse mail */}
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-1">
+                  Adresse mail <span className="text-accent">*</span>
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="jean.dupont@email.com"
                   className="w-full px-4 py-2.5 bg-dark-800 border border-dark-500 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-accent transition-colors"
                 />
               </div>
