@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 /* ============================================================
    Variantes d'animation Framer Motion
@@ -153,9 +154,14 @@ export default function HeroSection() {
                 />
             ------------------------------------------------ */}
             <div className="relative w-72 h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-2 border-accent/30 shadow-2xl">
-              <div className="w-full h-full bg-linear-to-br from-dark-700 to-dark-600 flex flex-col items-center justify-center">
-                <p className="text-gray-400 text-sm font-medium">A venir !</p>
-              </div>
+              <Image
+                src="/image/image_profil.jpg"
+                alt="Mickael MARTONE"
+                fill
+                className="object-cover"
+                priority
+                quality={100}
+              />
             </div>
 
             {/* Badge flottant animé */}
