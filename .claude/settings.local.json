@@ -4,7 +4,8 @@
       "Bash(npm install *)",
       "WebSearch",
       "WebFetch(domain:pixabay.com)",
-      "Bash(del \"c:/Users/Micka/Desktop/Github_Pro/Projet_portfolio/public/image/one-ring.svg\")"
+      "Bash(del \"c:/Users/Micka/Desktop/Github_Pro/Projet_portfolio/public/image/one-ring.svg\")",
+      "PowerShell(Rename-Item \"c:/Users/Micka/Desktop/Github_Pro/Projet_portfolio/public/image/ring-lotr.jfif\" \"ring-lotr.jpg\")"
     ]
   }
 }
