@@ -84,9 +84,10 @@ export default function HeroSection() {
 
           {/* Description */}
           <p className="text-gray-400 text-lg leading-relaxed max-w-xl">
-            Passionné par la création d'expériences web modernes et
-            performantes. Je conçois des applications de A à Z avec les
-            technologies les plus récentes du web.
+            Passionné par le développement web moderne, je crée des expériences
+            digitales fluides, soignées et performantes. De la conception à la
+            mise en ligne, je développe des applications complètes avec les
+            technologies web actuelles.
           </p>
 
           {/* Boutons d'action (CTA) */}

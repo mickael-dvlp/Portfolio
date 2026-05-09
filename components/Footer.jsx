@@ -5,31 +5,25 @@ import Link from "next/link";
 import { FaGithub, FaYoutube, FaLinkedin } from "react-icons/fa";
 import Logo from "./Logo";
 import ContactModal from "./ContactModal";
+import { toast } from "sonner";
 
-/* ============================================================
-   Liens vers les réseaux sociaux
-   Remplace les href placeholder par tes vraies URLs
-   ============================================================ */
 const socialLinks = [
   {
     icon: FaGithub,
     href: "https://github.com/mickael-dvlp",
     label: "GitHub",
-    /* Couleur au survol correspondant à la marque GitHub */
     hoverClass: "hover:text-white",
   },
   {
     icon: FaYoutube,
-    href: "https://youtube.com/placeholder",
     label: "YouTube",
-    /* Couleur au survol correspondant à la marque YouTube */
     hoverClass: "hover:text-red-500",
+    pending: true,
   },
   {
     icon: FaLinkedin,
     href: "https://www.linkedin.com/in/mickael-martone-218540214",
     label: "LinkedIn",
-    /* Couleur au survol correspondant à la marque LinkedIn */
     hoverClass: "hover:text-blue-400",
   },
 ];
@@ -63,19 +57,33 @@ export default function Footer() {
 
             {/* Icônes réseaux sociaux — gap-8 pour l'espacement entre les logos */}
             <div className="flex items-center gap-8">
-              {socialLinks.map(({ icon: Icon, href, label, hoverClass }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  /* Transition d'agrandissement + changement de couleur au survol */
-                  className={`text-gray-400 ${hoverClass} transition-all duration-200 hover:scale-125`}
-                >
-                  <Icon size={22} />
-                </a>
-              ))}
+              {socialLinks.map(({ icon: Icon, href, label, hoverClass, pending }) =>
+                pending ? (
+                  <button
+                    key={label}
+                    aria-label={label}
+                    onClick={() =>
+                      toast.info(
+                        "Chaîne en cours de création, mais soyez patient, de nombreux tutos arriveront prochainement !"
+                      )
+                    }
+                    className={`text-gray-400 ${hoverClass} transition-all duration-200 hover:scale-125 cursor-pointer`}
+                  >
+                    <Icon size={22} />
+                  </button>
+                ) : (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className={`text-gray-400 ${hoverClass} transition-all duration-200 hover:scale-125`}
+                  >
+                    <Icon size={22} />
+                  </a>
+                )
+              )}
             </div>
 
             {/* Bouton "Me contacter" */}
