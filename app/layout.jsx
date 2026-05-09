@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import CodeRain from "@/components/CodeRain";
 import { Toaster } from "sonner";
 
 /* ============================================================
@@ -65,14 +66,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={inter.variable}>
       <body className="bg-dark-900 text-white flex flex-col min-h-screen antialiased">
-        {/* Barre de navigation commune à toutes les pages */}
-        <Navbar />
+        {/* Pluie de code en fond — fixed, derrière tout le contenu */}
+        <CodeRain />
 
-        {/* Contenu principal de chaque page */}
-        <div className="flex-1">{children}</div>
-
-        {/* Pied de page commun à toutes les pages */}
-        <Footer />
+        {/* Contenu principal au-dessus de l'animation */}
+        <div className="relative z-1 flex flex-col flex-1">
+          <Navbar />
+          <div className="flex-1">{children}</div>
+          <Footer />
+        </div>
 
         {/* Bouton retour en haut */}
         <BackToTop />
