@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import CodeRain from "@/components/CodeRain";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "sonner";
 
 /* ============================================================
@@ -81,6 +82,9 @@ export default function RootLayout({ children }) {
 
         {/* Notifications toast */}
         <Toaster position="bottom-center" richColors />
+
+        {/* Mesure des performances en production */}
+        <SpeedInsights />
       </body>
     </html>
   );
