@@ -52,7 +52,7 @@ const personalProjects = [
     title: "MESBG Figurine",
     description:
       "Application de recensement et de gestion de collection de figurines pour le jeu Middle-Earth Strategy Battle Game. Suivez votre armée, gérez vos peintures et organisez vos batailles.",
-    href: "https://recensement-fig-ev5k.vercel.app/connexion",
+    href: "https://mesbg-collection-app.com",
     tags: ["Next.js", "Tailwind"],
     image: "/image/ring-lotr.jpg",
   },
