@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import CodeRain from "@/components/CodeRain";
+import MotionProvider from "@/components/MotionProvider";
+import { ContactModalProvider } from "@/components/ContactModalProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "sonner";
 
@@ -20,6 +22,7 @@ const inter = Inter({
    Métadonnées de l'application (utilisées pour le SEO)
    ============================================================ */
 export const metadata = {
+  metadataBase: new URL("https://mickael-martone-dvp.com"),
   title: "Mickael MARTONE — Développeur Web Full Stack",
   description:
     "Portfolio de Mickael MARTONE, développeur web full stack freelance spécialisé en React, Next.js et PHP. Création de sites web modernes, performants et sur mesure.",
@@ -67,18 +70,22 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={inter.variable}>
       <body className="bg-dark-900 text-white flex flex-col min-h-screen antialiased">
-        {/* Pluie de code en fond — fixed, derrière tout le contenu */}
-        <CodeRain />
+        <MotionProvider>
+          {/* Pluie de code en fond — fixed, derrière tout le contenu */}
+          <CodeRain />
 
-        {/* Contenu principal au-dessus de l'animation */}
-        <div className="relative z-1 flex flex-col flex-1">
-          <Navbar />
-          <div className="flex-1">{children}</div>
-          <Footer />
-        </div>
+          {/* Contenu principal au-dessus de l'animation */}
+          <ContactModalProvider>
+            <div className="relative z-1 flex flex-col flex-1">
+              <Navbar />
+              <div className="flex-1">{children}</div>
+              <Footer />
+            </div>
+          </ContactModalProvider>
 
-        {/* Bouton retour en haut */}
-        <BackToTop />
+          {/* Bouton retour en haut */}
+          <BackToTop />
+        </MotionProvider>
 
         {/* Notifications toast */}
         <Toaster position="bottom-center" richColors />

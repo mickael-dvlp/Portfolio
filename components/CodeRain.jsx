@@ -40,33 +40,44 @@ export default function CodeRain() {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
+    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     let particles = [];
     let animId;
+    let resizeId;
+    let isRunning = false;
+    let canvasWidth = window.innerWidth;
+    let canvasHeight = window.innerHeight;
 
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+      canvasWidth = window.innerWidth;
+      canvasHeight = window.innerHeight;
+      canvas.width = Math.round(canvasWidth * pixelRatio);
+      canvas.height = Math.round(canvasHeight * pixelRatio);
+      canvas.style.width = `${canvasWidth}px`;
+      canvas.style.height = `${canvasHeight}px`;
+      ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     };
-
-    const PARTICLE_COUNT = Math.floor((window.innerWidth * window.innerHeight) / 28000);
 
     const init = () => {
       resize();
-      particles = Array.from({ length: PARTICLE_COUNT }, () =>
-        createParticle(canvas.width, canvas.height, true)
+      const particleCount = Math.floor((canvasWidth * canvasHeight) / 28000);
+      particles = Array.from({ length: particleCount }, () =>
+        createParticle(canvasWidth, canvasHeight, true)
       );
     };
 
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (!isRunning) return;
+      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
       for (const p of particles) {
         p.y += p.speed;
         p.x += p.drift;
         p.currentAngle += p.angle * 0.008;
 
-        if (p.y > canvas.height + 50) {
-          Object.assign(p, createParticle(canvas.width, canvas.height, false));
+        if (p.y > canvasHeight + 50) {
+          Object.assign(p, createParticle(canvasWidth, canvasHeight, false));
         }
 
         ctx.save();
@@ -82,20 +93,49 @@ export default function CodeRain() {
       animId = requestAnimationFrame(animate);
     };
 
-    init();
-    animate();
-
-    const handleResize = () => {
-      resize();
-      particles = Array.from({ length: PARTICLE_COUNT }, () =>
-        createParticle(canvas.width, canvas.height, true)
-      );
+    const stop = () => {
+      isRunning = false;
+      cancelAnimationFrame(animId);
     };
 
+    const start = () => {
+      if (isRunning || document.hidden || reducedMotionQuery.matches) return;
+      isRunning = true;
+      animId = requestAnimationFrame(animate);
+    };
+
+    const handleResize = () => {
+      cancelAnimationFrame(resizeId);
+      resizeId = requestAnimationFrame(init);
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) stop();
+      else start();
+    };
+
+    const handleReducedMotionChange = () => {
+      if (reducedMotionQuery.matches) {
+        stop();
+        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+      } else {
+        init();
+        start();
+      }
+    };
+
+    init();
+    start();
     window.addEventListener("resize", handleResize);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    reducedMotionQuery.addEventListener("change", handleReducedMotionChange);
+
     return () => {
-      cancelAnimationFrame(animId);
+      stop();
+      cancelAnimationFrame(resizeId);
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      reducedMotionQuery.removeEventListener("change", handleReducedMotionChange);
     };
   }, []);
 

@@ -1,11 +1,8 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
-import { FaGithub, FaYoutube, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Logo from "./Logo";
-import ContactModal from "./ContactModal";
-import { toast } from "sonner";
+import ContactButton from "./ContactButton";
+import YoutubePendingButton from "./YoutubePendingButton";
 
 const socialLinks = [
   {
@@ -15,9 +12,7 @@ const socialLinks = [
     hoverClass: "hover:text-white",
   },
   {
-    icon: FaYoutube,
     label: "YouTube",
-    hoverClass: "hover:text-red-500",
     pending: true,
   },
   {
@@ -38,9 +33,6 @@ const socialLinks = [
  *  - Ligne de copyright
  */
 export default function Footer() {
-  /* Contrôle l'affichage de la modale de contact */
-  const [isContactOpen, setIsContactOpen] = useState(false);
-
   return (
     <>
       <footer className="bg-dark-800 border-t border-dark-500/40 mt-auto">
@@ -59,18 +51,7 @@ export default function Footer() {
             <div className="flex items-center gap-8">
               {socialLinks.map(({ icon: Icon, href, label, hoverClass, pending }) =>
                 pending ? (
-                  <button
-                    key={label}
-                    aria-label={label}
-                    onClick={() =>
-                      toast.info(
-                        "Chaîne en cours de création, mais soyez patient, de nombreux tutos arriveront prochainement !"
-                      )
-                    }
-                    className={`text-gray-400 ${hoverClass} transition-all duration-200 hover:scale-125 cursor-pointer`}
-                  >
-                    <Icon size={22} />
-                  </button>
+                  <YoutubePendingButton key={label} />
                 ) : (
                   <a
                     key={label}
@@ -87,12 +68,11 @@ export default function Footer() {
             </div>
 
             {/* Bouton "Me contacter" */}
-            <button
-              onClick={() => setIsContactOpen(true)}
+            <ContactButton
               className="px-5 py-2 border border-accent text-accent hover:bg-accent hover:text-white text-sm font-medium rounded-lg transition-all duration-200 hover:shadow-lg"
             >
               Me contacter
-            </button>
+            </ContactButton>
           </div>
 
           {/* ---- Ligne de copyright ---- */}
@@ -104,12 +84,6 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-
-      {/* Modale de contact */}
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
     </>
   );
 }

@@ -104,7 +104,7 @@ export default function SkillsSection() {
             Mes Technologies
           </h2>
           <p className="text-gray-400 mt-3 max-w-xl mx-auto">
-            Les outils et frameworks que j'utilise au quotidien pour créer
+            Les outils et frameworks que j&apos;utilise au quotidien pour créer
             des expériences web modernes et performantes.
           </p>
         </motion.div>

@@ -29,10 +29,10 @@ export default function NotFound() {
         {/* Message */}
         <div className="space-y-2">
           <h1 className="text-2xl font-semibold text-white">
-            Cette page n'existe pas
+            Cette page n&apos;existe pas
           </h1>
           <p className="text-gray-400 max-w-sm mx-auto">
-            La page que tu cherches a peut-être été déplacée, supprimée ou n'a jamais existé.
+            La page que tu cherches a peut-être été déplacée, supprimée ou n&apos;a jamais existé.
           </p>
         </div>
 
@@ -42,7 +42,7 @@ export default function NotFound() {
             href="/"
             className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent-hover text-white font-medium rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg"
           >
-            ← Retour à l'accueil
+            ← Retour à l&apos;accueil
           </Link>
         </div>
       </div>

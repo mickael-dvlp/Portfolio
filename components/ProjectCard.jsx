@@ -1,5 +1,6 @@
 "use client";
 
+import { useId } from "react";
 import { motion } from "framer-motion";
 import { FiExternalLink } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa";
@@ -27,6 +28,8 @@ import Image from "next/image";
  * @param {number}   index                - Index pour décaler l'animation d'entrée
  */
 export default function ProjectCard({ project, index }) {
+  const titleId = useId();
+
   /* Contenu interne de la carte (commun lien/div) */
   const cardContent = (
     <>
@@ -43,7 +46,10 @@ export default function ProjectCard({ project, index }) {
             ) : project.emoji ? (
               <span className="text-3xl">{project.emoji}</span>
             ) : null}
-            <h3 className="text-white font-semibold text-lg group-hover:text-accent transition-colors leading-snug">
+            <h3
+              id={titleId}
+              className="text-white font-semibold text-lg group-hover:text-accent transition-colors leading-snug"
+            >
               {project.title}
             </h3>
           </div>
@@ -78,18 +84,15 @@ export default function ProjectCard({ project, index }) {
         {/* ---- Lien GitHub — affiché en bas à droite si github est fourni ---- */}
         {project.github && (
           <div className="flex justify-end mt-4 pt-3 border-t border-dark-500/50">
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-                window.open(project.github, "_blank", "noopener,noreferrer");
-              }}
-              className="flex items-center gap-1.5 text-gray-400 hover:text-white text-xs font-medium transition-colors duration-200"
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative z-10 pointer-events-auto flex items-center gap-1.5 text-gray-400 hover:text-white text-xs font-medium transition-colors duration-200"
             >
               <FaGithub size={14} />
               Voir lien Github
-            </button>
+            </a>
           </div>
         )}
       </div>
@@ -105,21 +108,21 @@ export default function ProjectCard({ project, index }) {
       transition={{ duration: 0.4, delay: index * 0.1 }}
       /* Élévation au survol */
       whileHover={{ y: -7 }}
-      className="group bg-dark-700 border border-dark-500 rounded-xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-xl"
+      className="relative group bg-dark-700 border border-dark-500 rounded-xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-xl"
     >
-      {/* Si href fourni → lien cliquable, sinon → bloc simple */}
-      {project.href ? (
+      {/* Le lien principal couvre la carte sans contenir le lien GitHub. */}
+      {project.href && (
         <a
           href={project.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="block"
-        >
-          {cardContent}
-        </a>
-      ) : (
-        <div>{cardContent}</div>
+          aria-labelledby={titleId}
+          className="absolute inset-0 z-1 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        />
       )}
+      <div className={project.href ? "relative z-2 pointer-events-none" : undefined}>
+        {cardContent}
+      </div>
     </motion.div>
   );
 }

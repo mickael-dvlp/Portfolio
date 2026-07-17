@@ -61,7 +61,7 @@ export default function ArticleCard({ article, index }) {
             {article.readTime} min de lecture
           </span>
           <span className="text-accent text-sm font-medium group-hover:underline underline-offset-2">
-            Lire l'article →
+            Lire l&apos;article →
           </span>
         </div>
       </div>

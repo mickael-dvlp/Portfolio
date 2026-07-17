@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
-import ContactModal from "./ContactModal";
+import { useContactModal } from "./ContactModalProvider";
 
 /* ============================================================
    Configuration des liens de navigation
@@ -32,8 +32,8 @@ export default function Navbar() {
   /* Contrôle l'ouverture du menu mobile */
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  /* Contrôle l'affichage de la modale de contact */
-  const [isContactOpen, setIsContactOpen] = useState(false);
+  /* Modale de contact partagée (instance unique gérée par le layout) */
+  const { openContact } = useContactModal();
 
   /* Détecte si l'utilisateur a scrollé pour changer le style de la navbar */
   const [isScrolled, setIsScrolled] = useState(false);
@@ -61,8 +61,8 @@ export default function Navbar() {
   /**
    * Ouvre la modale de contact et ferme le menu mobile si ouvert
    */
-  const openContact = () => {
-    setIsContactOpen(true);
+  const handleOpenContact = () => {
+    openContact();
     setIsMenuOpen(false);
   };
 
@@ -129,7 +129,7 @@ export default function Navbar() {
 
               {/* Bouton Contact — ouvre la modale */}
               <button
-                onClick={openContact}
+                onClick={handleOpenContact}
                 className="px-5 py-2 bg-accent hover:bg-accent-hover text-white text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg"
               >
                 Contact
@@ -194,7 +194,7 @@ export default function Navbar() {
                   </Link>
                 ))}
                 <button
-                  onClick={openContact}
+                  onClick={handleOpenContact}
                   className="w-full px-4 py-2.5 bg-accent hover:bg-accent-hover text-white text-sm font-medium rounded-lg transition-all"
                 >
                   Contact
@@ -204,12 +204,6 @@ export default function Navbar() {
           )}
         </AnimatePresence>
       </nav>
-
-      {/* Modale de contact partagée */}
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
     </>
   );
 }

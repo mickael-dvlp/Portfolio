@@ -15,7 +15,7 @@ export default function ArticlesPage() {
             Mes Articles
           </h1>
           <p className="text-gray-400 mt-4 max-w-xl mx-auto text-lg">
-            Partage de connaissances, tutoriels et retours d'expérience sur
+            Partage de connaissances, tutoriels et retours d&apos;expérience sur
             le développement web moderne.
           </p>
         </div>

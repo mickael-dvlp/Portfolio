@@ -1,9 +1,6 @@
-"use client";
-
-import { useState } from "react";
 import HeroSection from "@/components/HeroSection";
 import SkillsSection from "@/components/SkillsSection";
-import ContactModal from "@/components/ContactModal";
+import ContactButton from "@/components/ContactButton";
 
 /**
  * HomePage — Page d'accueil du portfolio
@@ -13,12 +10,10 @@ import ContactModal from "@/components/ContactModal";
  *  2. SkillsSection  → grille des compétences avec logos
  *  3. Section CTA    → bouton "Me contacter" qui ouvre la modale
  *
- * La modale ContactModal est gérée localement par l'état `isContactOpen`.
+ * Seul le bouton de contact est un Client Component ; la page reste rendue
+ * comme Server Component.
  */
 export default function HomePage() {
-  /* Contrôle l'affichage de la modale de contact */
-  const [isContactOpen, setIsContactOpen] = useState(false);
-
   return (
     <main>
       {/* ---- 1. Section héro : présentation + photo ---- */}
@@ -48,24 +43,17 @@ export default function HomePage() {
             Un projet en tête ?
           </h2>
           <p className="text-gray-400 text-lg mb-10">
-            N'hésitez pas à me contacter pour discuter de votre projet ou d'une
+            N&apos;hésitez pas à me contacter pour discuter de votre projet ou d&apos;une
             opportunité de collaboration.
           </p>
           {/* Bouton principal — ouvre la modale de contact */}
-          <button
-            onClick={() => setIsContactOpen(true)}
+          <ContactButton
             className="px-10 py-4 bg-accent hover:bg-accent-hover text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 hover:shadow-2xl text-lg"
           >
             Me contacter
-          </button>
+          </ContactButton>
         </div>
       </section>
-
-      {/* Modale de contact */}
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
     </main>
   );
 }
